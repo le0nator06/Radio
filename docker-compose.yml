@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  schwanzradio:
+    container_name: schwanzradio
+    image: le0nator/schwanzradio:latest
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env
+    volumes:
+      # Bind-mount your YouTube cookies JSON into the container.
+      # Adjust the left-hand path if your cookie file lives elsewhere.
+      - ./cookie.json:/app/cookies.json:ro
+    environment:
+      # Point the app to the in-container cookie file path.
+      # This will override YT_COOKIE_FILE from .env if present.
+      FFMPEG_PATH: /usr/bin/ffmpeg
+      YT_COOKIE_FILE: /app/cookies.json
+    restart: unless-stopped

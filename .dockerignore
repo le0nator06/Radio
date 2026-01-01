@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+server/dist
+client/dist
+.tmp
+.git
+.gitignore
+.dockerignore
+.env
+.env.local
